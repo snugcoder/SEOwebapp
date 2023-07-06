@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+<!-- Specifies that the tempalte inherits from another template 
+called layout.html - the layout for multiple pages -->
+{% block content %}
+<!-- defines a section in the template -->
+    <h2>{{ subtitle }}</h2>
+    <p>{{ text }}</p>
+{% endblock content %}
+
+<!-- end of content -->

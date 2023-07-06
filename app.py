@@ -1,4 +1,5 @@
-from flask import Flask, render_template, url_for, flash, redirect
+import git
+from flask import Flask, render_template, url_for, flash, redirect, request
 from flask_behind_proxy import FlaskBehindProxy
 from forms import RegistrationForm
 
@@ -16,8 +17,18 @@ def register():
         return redirect(url_for('home')) # if so - send to home page
     return render_template('register.html', title='Register', form=form)
 
+@app.route("/update_server", methods=['POST'])
+def webhook():
+    if request.method == 'POST':
+        repo = git.Repo('/home/SEOTECHapp/SEOwebapp')
+        origin = repo.remotes.origin
+        origin.pull()
+        return 'Updated PythonAnywhere successfully', 200
+    else:
+        return 'Wrong event type', 400
 @app.route("/") 
 #associates a URL with a Python function - access the root URL '/'
+#TODO: change this home directory to locate other pages as well
 
 def hello_world():
     return "<p>Hello, World!</p>"        

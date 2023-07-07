@@ -41,6 +41,7 @@ def register():
 
     return render_template('register.html', title='Register', form=form)
 
+# auto_deployment
 @app.route("/update_server", methods=['POST'])
 def webhook():
     if request.method == 'POST':
@@ -52,15 +53,10 @@ def webhook():
         return 'Wrong event type', 400
 @app.route("/") 
 #associates a URL with a Python function - access the root URL '/'
-#TODO: change this home directory to locate other pages as well
 def home(): #the home function is defined
   return render_template('home.html', subtitle='Home Page')
 #render_template takes the name of the template, subtitle, and text
 # as args and renders it
-
-@app.route('/name')
-def index():
-  return render_template('index.html', subtitile='Index Page')
 
 @app.route('/about')
 def about():

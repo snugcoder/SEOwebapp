@@ -1,5 +1,5 @@
 {%extends 'layout.html' %}
-{$ block content %}
+{% block content %}
 <!-- adds CSS styling -->
   <div class="content-section"> 
     <form method='POST' action="">
@@ -9,6 +9,7 @@
 <!-- adds our first form field with data validation -->
         <div class="form-group">
             {{ form.username.label(class="form-control-label") }}
+             <!-- if block in jinja which catches data validation errors -> "incorrect password", etc -->
             {% if form.username.errors %}
               {{ form.username(class="form-control form-control-lg is-invalid") }}
               <div class="invalid-feedback">
@@ -20,14 +21,7 @@
               {{ form.username(class="form-control form-control-lg") }}
           {% endif %}
         </div>
- <!-- if block in jinja which catches data validation errors -> "incorrect password", etc -->
-            {% if form.username.errors %}
-                    {{ form.username(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                      {% for error in form.username.errors%}
-                          <span>{{error}}</span>
-                      {% endfor %}
-                    </div>
+          
      <div class="form-group">
          {{ form.email.label(class="form-control-label") }}
          {% if form.email.errors %}

@@ -54,7 +54,7 @@ def webhook():
 @app.route("/") 
 #associates a URL with a Python function - access the root URL '/'
 def home(): #the home function is defined
-  return render_template('home.html', subtitle='Home Page')
+  return render_template('home.html', subtitle='Home Page', text='Hello World')
 #render_template takes the name of the template, subtitle, and text
 # as args and renders it
 
